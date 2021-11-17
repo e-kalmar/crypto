@@ -50,6 +50,7 @@ class FavoritesController extends Controller
         } else {
             Favorites::create($inputs);
         }
+        // return ->with('message','Data added Successfully');
     }
 
     /**

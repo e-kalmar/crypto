@@ -2,12 +2,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css">
 
     @section('content')
-    <div class="card">
+    <section class='content'>
+    <div class="container-fluid pt-3">
+    <div class="card ">
         <div class="card-header">
             Header
         </div>
         <div class="card-body">
-            <table id="example1" class="table table-hover text-nowrap table-dark">
+            <table id="example1" class="table table-hover text-nowrap">
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -54,7 +56,8 @@
             Footer
         </div>
     </div>
-    
+    </div>
+    </section>
     @endsection
    
 </x-admin-master>
@@ -84,7 +87,7 @@
             dataType: "json",
             success: function (response) {
             },complete: function(complete) {
-
+                toastr.success('Success messages');
             },
             error: (err)=>{ console.log(err) }
         });
