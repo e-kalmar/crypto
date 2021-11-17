@@ -11,7 +11,9 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
+    
     @yield('third_party_stylesheets')
 
     @stack('page_css')
@@ -86,6 +88,10 @@
 
 {{--<!-- Bootstrap core JavaScript-->--}}
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0-rc/js/adminlte.min.js" integrity="sha512-pbrNMLSckfh8yEOr2o1RT+4zMU3Sj7+zP3BOY6nFVI/FLnjTRyubNppLbosEt4nvLCcdsEa8tmKhH3uqOYFXKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
+
 {{--<!-- Core plugin JavaScript-->--}}
 {{--<script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>--}}
 {{--<!-- Page level plugins -->--}}
