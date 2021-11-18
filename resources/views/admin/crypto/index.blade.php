@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach($data as $element)
+                    @foreach($coins as $element)
                         <tr>
                             <td><a href="{{ route('crypto.show',$element['rank']) }}"
                                     class="btn btn-dark">{{ $element['rank'] }}</a></td>
@@ -52,8 +52,10 @@
             </table>
        
         </div>
-        <div class="card-footer text-muted">
-            Footer
+        <div class="card-footer pb-0 px-0">
+            <div class="row">
+            {{$coins->links()}}
+        </div>
         </div>
     </div>
     </div>

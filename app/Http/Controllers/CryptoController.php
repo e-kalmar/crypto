@@ -38,7 +38,9 @@ class CryptoController extends Controller
             $data[$key]['ath'] = $coin['ath'];
             $data[$key]['id_gecko'] = $coin['id'];
             $data[$key]['isFav'] = Favorites::where('crypto_name', $coin['name'])->where('user_id', $user_id)->count();
+            
             $crypto = new Crypto();
+            
             $crypto->rank = $coin['market_cap_rank'];
             $crypto->name = $coin['name'];
             $crypto->price = $coin['current_price'];
@@ -46,11 +48,15 @@ class CryptoController extends Controller
             $crypto->image  = $coin['image'];
             $crypto->ath = $coin['ath'];
             $crypto->id_gecko = $coin['id'];
+            
             $crypto->save();
             $key++;
         }
         
-        return view('admin.crypto.index', ['data' => $data]);
+        $coins = Crypto::where('rank','>',0)->paginate(25);
+        
+
+        return view('admin.crypto.index', ['coins' => $coins]);
 
 
     }
