@@ -15,7 +15,7 @@
                             <h1 class="text-black-50">{{$crypto->name}}</h1>
                             <h3 class="card-title">Current price: {{round($crypto->price)}}</h3>
                             
-                               
+                               {{-- <h1></h1> --}}
                             
                         </div>
                         <div class="card-body">
