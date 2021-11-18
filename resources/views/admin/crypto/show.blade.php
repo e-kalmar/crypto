@@ -22,6 +22,7 @@
                             <img src="{{$crypto->image}}" class="img-fluid rounded  mx-auto d-block"
                             alt="{{$crypto->name}} image">
                             <hr>
+
                             <div class="text-center">{!!$description!!}</div>
                         </div>
                     </div>
