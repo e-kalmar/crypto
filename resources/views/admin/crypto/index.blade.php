@@ -1,4 +1,4 @@
-<x-admin-master>
+@extends('layouts.app')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css">
 
     @section('content')
@@ -60,37 +60,37 @@
     </section>
     @endsection
    
-</x-admin-master>
-
+@section('scripts')
 <script type="text/javascript">
    
-   $('.crypto-btn').on('click', function(e) {  
-    e.preventDefault();
-       var cryptoName = $(this).closest('tr').find('.hiddenCryptoName').val()
-       var favIcon = $(this).closest('tr').find('.fa-star');
-       if ( favIcon.hasClass('far') ) {
-           favIcon.removeClass('far')
-           favIcon.addClass('fas')
-       } else {
-        favIcon.removeClass('fas')
-        favIcon.addClass('far')
-       }
-    //    console.log(favIcon);
-       var target = e.target;
-    //    console.log($('crypto-name'));
-        $.ajax({
-            type: "post",
-            url: "{{ route('favorites.store') }}",
-            data: {"_token" : "{{ csrf_token() }}",
-            cryptoName : cryptoName
-            },
-            dataType: "json",
-            success: function (response) {
-            },complete: function(complete) {
-                toastr.success('Success messages');
-            },
-            error: (err)=>{ console.log(err) }
-        });
-   });       
-
-</script>
+    $('.crypto-btn').on('click', function(e) {  
+     e.preventDefault();
+        var cryptoName = $(this).closest('tr').find('.hiddenCryptoName').val()
+        var favIcon = $(this).closest('tr').find('.fa-star');
+        if ( favIcon.hasClass('far') ) {
+            favIcon.removeClass('far')
+            favIcon.addClass('fas')
+        } else {
+         favIcon.removeClass('fas')
+         favIcon.addClass('far')
+        }
+     //    console.log(favIcon);
+        var target = e.target;
+     //    console.log($('crypto-name'));
+         $.ajax({
+             type: "post",
+             url: "{{ route('favorites.store') }}",
+             data: {"_token" : "{{ csrf_token() }}",
+             cryptoName : cryptoName
+             },
+             dataType: "json",
+             success: function (response) {
+             },complete: function(complete) {
+                 toastr.success('Success messages');
+             },
+             error: (err)=>{ console.log(err) }
+         });
+    });       
+ 
+ </script>
+ @endsection

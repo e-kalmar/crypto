@@ -49,7 +49,7 @@ class CryptoController extends Controller
             $crypto->save();
             $key++;
         }
-
+        
         return view('admin.crypto.index', ['data' => $data]);
 
 
