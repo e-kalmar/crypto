@@ -67,9 +67,7 @@ class FavoritesController extends Controller
                                 ->select('cryptos.*', 'favorites.crypto_name')
                                 ->where('user_id', $user->id)->get();
         // echo $favorites;
-        $coin_tickers = $client->coins()->getMarketChart('bitcoin', 'usd', 'max');
-        echo '<pre>'. json_encode($coin_tickers['prices'], JSON_PRETTY_PRINT) . '</pre>';die;
-        return view('admin.crypto.watchlist', ['favorites'=>$favorites], ['']);
+        return view('admin.crypto.watchlist', ['favorites'=>$favorites]);
     }
 
     /**
