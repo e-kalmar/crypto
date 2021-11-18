@@ -37,7 +37,7 @@ class FavoritesController extends Controller
      */
     public function store(Request $request)
     {
-        // var_dump($request->cryptoName);die;
+        // var_dump($v);die;
         // Favorites::where('crypto_name', $inputs['crypto_name'])->where('user_id', $user->id)
         $user = Auth::user();
         $inputs['user_id'] = $user->id;
@@ -59,9 +59,17 @@ class FavoritesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function watchlist()
     {
         //
+        $user = Auth::user();
+        $favorites = Favorites::leftJoin('cryptos', 'favorites.crypto_name', '=', 'cryptos.name')
+                                ->select('cryptos.*', 'favorites.crypto_name')
+                                ->where('user_id', $user->id)->get();
+        // echo $favorites;
+        $coin_tickers = $client->coins()->getMarketChart('bitcoin', 'usd', 'max');
+        echo '<pre>'. json_encode($coin_tickers['prices'], JSON_PRETTY_PRINT) . '</pre>';die;
+        return view('admin.crypto.watchlist', ['favorites'=>$favorites], ['']);
     }
 
     /**

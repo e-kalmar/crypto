@@ -30,17 +30,7 @@ class CryptoController extends Controller
         Crypto::truncate();
 
         foreach ($coins_list as $key => $coin) {
-            $data[$key]['rank'] = $coin['market_cap_rank'];
-            $data[$key]['name'] = $coin['name'];
-            $data[$key]['price'] = $coin['current_price'];
-            $data[$key]['target'] = 'USD';
-            $data[$key]['image'] = $coin['image'];
-            $data[$key]['ath'] = $coin['ath'];
-            $data[$key]['id_gecko'] = $coin['id'];
-            $data[$key]['isFav'] = Favorites::where('crypto_name', $coin['name'])->where('user_id', $user_id)->count();
-            
             $crypto = new Crypto();
-            
             $crypto->rank = $coin['market_cap_rank'];
             $crypto->name = $coin['name'];
             $crypto->price = $coin['current_price'];
@@ -48,17 +38,16 @@ class CryptoController extends Controller
             $crypto->image  = $coin['image'];
             $crypto->ath = $coin['ath'];
             $crypto->id_gecko = $coin['id'];
-            
             $crypto->save();
             $key++;
         }
         
-        $coins = Crypto::where('rank','>',0)->paginate(25);
-        
-
+        $coins = Crypto::leftJoin('favorites', 'cryptos.name', '=', 'favorites.crypto_name')
+                        ->select('cryptos.*', 'favorites.crypto_name')
+                        ->paginate(25);
+                        // var_dump(json_encode($coins));die;        
+                            
         return view('admin.crypto.index', ['coins' => $coins]);
-
-
     }
 
     /**
