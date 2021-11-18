@@ -44,6 +44,7 @@ Route::get('/crypto/{id}/coin', [CryptoController::class, 'show'])->name('crypto
 
 // FAVORITES CONTROLLER
 Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
+Route::get('/watchlist', [FavoritesController::class, 'watchlist'])->name('favorites.watchlist');
 
 Auth::routes();
 

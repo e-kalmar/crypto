@@ -37,12 +37,11 @@
                             <td>
                                 <a href="#"
                                     class="btn btn-outline-warning crypto-btn">
-                                    @if($element['isFav'] > 0)
-                                    <i class="fas fa-star"></i>
+                                    @if($element['crypto_name'])
+                                        <i class="fas fa-star"></i>
                                     @else
-                                    <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
                                     @endif
-                                    <!-- <i class="far fa-star"></i> -->
                                 </a>
                             </td>
                         </tr>
