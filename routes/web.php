@@ -61,9 +61,8 @@ Route::middleware('auth')->group(function (){
    Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
    Route::get('/watchlist', [FavoritesController::class, 'watchlist'])->name('favorites.watchlist');
    
-
+   require __DIR__.'/users.php';
 });
 
 
 // Each modul has different route file 
-require __DIR__.'/users.php';
