@@ -23,12 +23,6 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/users', [UserController::class , 'index'])->name('user.index');
-Route::put('/users', [UserController::class, 'store'])->name('user.store');
-Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
-Route::put('/users/{user}/update', [UserController::class , 'update'])->name('user.profile.update');
-Route::get('/users/{user}/profile', [UserController::class , 'show'])->name('user.profile.show');
-Route::delete('/users/{user}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::get('/cars/create', [CarController::class, 'create'])->name('car.create');
 Route::get('/cars', [CarController::class, 'index'])->name('car.index');
@@ -51,3 +45,7 @@ Auth::routes();
 //Route::middleware('auth')->group(function (){
 //    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
 //});
+
+
+// Each modul has different route file 
+require __DIR__.'/users.php';
