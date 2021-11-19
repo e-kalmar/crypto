@@ -42,9 +42,27 @@ Route::get('/watchlist', [FavoritesController::class, 'watchlist'])->name('favor
 
 Auth::routes();
 
-//Route::middleware('auth')->group(function (){
-//    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
-//});
+Route::middleware('auth')->group(function (){
+   Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+
+   Route::get('/cars/create', [CarController::class, 'create'])->name('car.create');
+   Route::get('/cars', [CarController::class, 'index'])->name('car.index');
+   Route::put('/cars', [CarController::class, 'store'])->name('car.store');
+   Route::delete('/cars/{car}/destroy', [CarController::class, 'destroy'])->name('car.destroy');
+   Route::get('/cars/{car}/edit', [CarController::class, 'edit'])->name('car.edit');
+   Route::patch('/cars/{car}/update', [CarController::class, 'update'])->name('car.update');
+   
+   // CRYPTO CONTROLLER RELATED
+   Route::get('/crypto', [CryptoController::class, 'index'])->name('crypto.index');
+   Route::get('/crypto/store', [CryptoController::class, 'store'])->name('crypto.store');
+   Route::get('/crypto/{id}/coin', [CryptoController::class, 'show'])->name('crypto.show');
+   
+   // FAVORITES CONTROLLER
+   Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
+   Route::get('/watchlist', [FavoritesController::class, 'watchlist'])->name('favorites.watchlist');
+   
+
+});
 
 
 // Each modul has different route file 
