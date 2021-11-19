@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-Route::prefix('users')->name('users.')->group(function(){
+Route::prefix('user')->name('user.')->group(function(){
 
     Route::get('/', [UserController::class , 'index'])->name('index');
     Route::put('/create', [UserController::class, 'store'])->name('store');
