@@ -1,4 +1,4 @@
-<x-admin-master>
+@extends('layouts.app')
     @section('content')
         <div class="container-fluid">
             <h1 class="text-black-50">You are in clients!</h1>
@@ -65,4 +65,3 @@
 
 
     @endsection
-</x-admin-master>

@@ -1,13 +1,9 @@
-<x-admin-master>
+@extends('layouts/app')
     @section('content')
-        <div class="container-fluid">
-            <h1 class="text-black-50">Create user!</h1>
-        </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
+
+        <div class="container-fluid p-3">
+                
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Create user!</h3>
@@ -57,8 +53,5 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
         </div>
     @endsection
-</x-admin-master>
